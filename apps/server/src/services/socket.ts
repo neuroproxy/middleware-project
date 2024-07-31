@@ -1,18 +1,7 @@
 import { Server } from "socket.io";
 import Redis from 'ioredis'
 
-// const pub = new Redis({
-//     host: '',
-//     port: ,
-//     username: '',
-//     password: ''
-// })
-// const sub = new Redis({
-//     host: '',
-//     port: ,
-//     username: '',
-//     password: ''
-// })
+
 
 //Clase que exporta el socket al archivo index que contiene el servidor
 class SocketService {

@@ -2,7 +2,6 @@ import { Server } from "socket.io";
 import Redis from 'ioredis'
 
 
-
 //Clase que exporta el socket al archivo index que contiene el servidor
 class SocketService {
     private _io: Server

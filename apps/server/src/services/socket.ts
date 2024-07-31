@@ -2,16 +2,16 @@ import { Server } from "socket.io";
 import Redis from 'ioredis'
 
 const pub = new Redis({
-    host: 'caching-2efbeb0-middleware-project.e.aivencloud.com',
-    port: 12606,
-    username: 'default',
-    password: 'AVNS_pTOZ4hzlDEPg-2u0SN7'
+    host: '',
+    port: ,
+    username: '',
+    password: ''
 })
 const sub = new Redis({
-    host: 'caching-2efbeb0-middleware-project.e.aivencloud.com',
-    port: 12606,
-    username: 'default',
-    password: 'AVNS_pTOZ4hzlDEPg-2u0SN7'
+    host: '',
+    port: ,
+    username: '',
+    password: ''
 })
 
 //Clase que exporta el socket al archivo index que contiene el servidor

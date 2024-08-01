@@ -12,7 +12,8 @@ export default function Page() {
           <h1>Chat</h1>
       </div>
       <div>
-        <input 
+        <input
+          value={message} 
           onChange={(e) => setMessage(e.target.value)} 
           className={classes["chat-input"]} 
           placeholder="Mensaje..." 
@@ -23,9 +24,13 @@ export default function Page() {
             Enviar 
           </button>
       </div>
-      <div>
-        {messages.map( (e) => (
-          <li>{e}</li>
+      <div className={classes["messages-container"]}>
+        {messages.map( (msg, index) => (
+          <div
+          key={index}
+          className={`${classes["message"]} ${msg.sender === 'user1' ? classes["right"] : classes["left"]}`}>
+          {msg.text}
+          </div>
         ))}
       </div>
     </div>

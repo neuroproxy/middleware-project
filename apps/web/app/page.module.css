@@ -8,7 +8,40 @@
 
 .button {
   height: 50px;
-  width: 60px;
+  width: 90px;
   padding: 10px;
   border-radius: 10px;
+  border: 1px solid #00ccff; /* Color del borde */
+  background-color: #00e1ff; /* Color de fondo del boton */
+  color: white; /* Color del texto */
+  font-size: 16px; /* Tamaño de la fuente */
+  cursor: pointer
+}
+
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.message {
+  max-width: 60%;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+.right {
+  align-self: flex-end;
+  background-color: #0ac6ff; /* Color para mensajes enviados */
+  border-top-right-radius: 0;
+}
+
+.left {
+  align-self: flex-start;
+  background-color: #87e643; /* Color de fondo para mensajes recibidos */
+  border-top-left-radius: 0;
+  border: 1px solid #ddd; /* Borde opcional para mensajes recibidos */
 }

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.17.0",
     "@repo/ui": "*",
     "ioredis": "^5.4.1",
     "next": "15.0.0-rc.0",

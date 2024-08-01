@@ -1,17 +1,19 @@
 import { Server } from "socket.io";
 import Redis from 'ioredis'
+import prismaClient from "./prisma";
+import { produceMessage } from "./kafka";
 
 const pub = new Redis({
-    host: '',
+    host: 'caching-2efbeb0-middleware-project.e.aivencloud.com',
     port: 12606,
-    username: '',
-    password: ''
+    username: 'default',
+    password: 'AVNS_pTOZ4hzlDEPg-2u0SN7'
 })
 const sub = new Redis({
-    host: '',
+    host: 'caching-2efbeb0-middleware-project.e.aivencloud.com',
     port: 12606,
-    username: '',
-    password: ''
+    username: 'default',
+    password: 'AVNS_pTOZ4hzlDEPg-2u0SN7'
 })
 
 //Clase que exporta el socket al archivo index que contiene el servidor
@@ -39,17 +41,20 @@ class SocketService {
         //Funcion que conecta el socket a traves del .id y registra el evento message
         io.on('connect', async socket => {
             console.log(`Nuevo Socket Conectado`, socket.id)
-            socket.on('event:message', async ({message}: {message:string}) => {
+            socket.on('event:message', async ({message, sender}: {message:string, sender: string}) => {
                 console.log("Nuevo Mensaje Recibido.", message)
 
                 //Publish el mensaje hacia Redis
-                await pub.publish("MENSAJE", JSON.stringify({ message }))
+                await pub.publish("MENSAJE", JSON.stringify({ message, sender }))
             })
         })
-        sub.on('message', (channel, message) => {
+        sub.on('message', async (channel, message) => {
             if (channel === 'MENSAJE') {
                 console.log("Nuevo mensajes desde Redis", message)
                 io.emit("message", message);
+                //Se almacena en la base de datos
+                await produceMessage(message)
+                console.log('Mensaje realizado por Kafka')
             }
         })
     }

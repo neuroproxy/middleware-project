@@ -1,9 +1,10 @@
 import http from 'http'
 import SocketService from './services/socket'
+import { startMessageConsumer } from './services/kafka'
 
 //Funcion para crear y ejecutar un servidor HTTP
 async function init() {
-
+    startMessageConsumer()
     const socketService = new SocketService()
 
     const httpServer = http.createServer()

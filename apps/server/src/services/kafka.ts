@@ -5,14 +5,14 @@ import { couldStartTrivia } from "typescript";
 import prismaClient from "./prisma";
 
 const kafka = new Kafka({
-    brokers : ["kafka-2d8dc771-middleware-project.f.aivencloud.com:12619"],
+    brokers : [""],
     ssl: {
         ca: [fs.readFileSync(path.resolve("./ca.pem"), "utf-8")],
     },
     sasl: {
-        username: 'avnadmin',
-        password: 'AVNS_dKtTgJdTySnPDpQTmU0',
-        mechanism: "plain",
+        username: '',
+        password: '',
+        mechanism: "",
     }
 })
 
